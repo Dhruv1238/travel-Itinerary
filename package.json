@@ -9,9 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "@nextui-org/card": "^2.0.34",
+    "@nextui-org/divider": "^2.0.32",
+    "@nextui-org/spinner": "^2.0.34",
+    "@nextui-org/system": "^2.2.6",
+    "@nextui-org/theme": "^2.2.11",
+    "framer-motion": "^11.11.9",
+    "next": "14.2.15",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.15"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "postcss": "^8",

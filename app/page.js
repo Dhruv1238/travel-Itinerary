@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [destination, setDestination] = useState("");
@@ -9,27 +10,21 @@ export default function Home() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
+  const router = useRouter();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    router.push(`/itenarary?destination=${destination}&budget=${budget}&travellers=${travellers}&accommodation=${accommodation}&startDate=${startDate}&endDate=${endDate}`);
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-800">
-      <div className="bg-gray-700 p-8 rounded-lg shadow-lg w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-semibold text-center mb-6">
           Create Your Travel Itinerary
         </h2>
 
-        <form
-          className="space-y-4"
-          onSubmit={(e) => {
-            console.log(
-              destination,
-              budget,
-              travellers,
-              accommodation,
-              startDate,
-              endDate
-            );
-            e.preventDefault();
-          }}
-        >
+        <form className="space-y-4" onSubmit={handleSubmit}>
           {/* Destination Input */}
           <div>
             <label className="block text-sm font-medium text-white">
@@ -116,7 +111,7 @@ export default function Home() {
           <div>
             <button
               type="submit"
-              className="w-full p-2 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              className="w-full p-2 bg-white text-black rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
             >
               Submit
             </button>
