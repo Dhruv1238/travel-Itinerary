@@ -3,7 +3,7 @@ import { Card, CardBody, CardHeader } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
 import { Spinner } from "@nextui-org/spinner";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 const {
     GoogleGenerativeAI,
@@ -145,4 +145,13 @@ const ItenararyPage = () => {
     );
 };
 
-export default ItenararyPage;
+const ItenararyPageWrapper = () => (
+    <Suspense fallback={
+        <div className=" h-screen w-screen flex justify-center items-center text-xl">
+            <Spinner color="default" size="lg" />
+        </div>}>
+        <ItenararyPage />
+    </Suspense>
+);
+
+export default ItenararyPageWrapper;
