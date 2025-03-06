@@ -92,9 +92,10 @@ const ItenararyPage = () => {
       `;
 
             const result = await chatSession.sendMessage(message);
-            console.log(result.response.text());
-            const responseText = result.response.text();
-            setItinerary(JSON.parse(responseText));
+            const responseText = await result.response.text(); // Await the response text
+            console.log(responseText);
+            const cleanedResponseText = responseText.replace(/```json|```/g, ''); // Remove backticks
+            setItinerary(JSON.parse(cleanedResponseText));
         }
 
         fetchItinerary();
